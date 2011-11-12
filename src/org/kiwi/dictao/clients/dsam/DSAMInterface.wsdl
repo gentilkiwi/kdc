@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by Nasdaq Boom (World of Cracking) -->
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.dictao.com/DSAM/Interface" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dictao.com/DSAM/Interface" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://www.dictao.com/DSAM/Interface">
+			<s:element name="DSAMverifySignature">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="requestId" type="s:string"/>
+						<s:element name="documentType" type="s:string"/>
+						<s:element name="signature" type="tns:dataType"/>
+						<s:element name="tag" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DSAMverifySignatureEx">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="requestId" type="s:string"/>
+						<s:element name="documentType" type="s:string"/>
+						<s:element name="signature" type="tns:dataType"/>
+						<s:element name="tag" type="s:string"/>
+						<s:element name="refreshCRLs" type="s:int"/>
+						<s:element name="signedData" type="tns:dataType"/>
+						<s:element name="signedDataHash" type="s:string"/>
+						<s:element name="certificate" type="s:string"/>
+						<s:element name="pluginParameter" type="tns:ArrayOfPluginParameterStruct"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="dataType">
+				<s:choice>
+					<s:element name="value" type="tns:dataString"/>
+					<s:element name="binaryValue" type="tns:dataBinary"/>
+				</s:choice>
+			</s:complexType>
+			<s:complexType name="dataString">
+				<s:simpleContent>
+					<s:extension base="s:string">
+						<s:attribute name="dataFormat" type="tns:dataEncoding" use="optional"/>
+					</s:extension>
+				</s:simpleContent>
+			</s:complexType>
+			<s:complexType name="dataBinary">
+				<s:simpleContent>
+					<s:extension base="s:base64Binary">
+						<s:attribute name="dataFormat" type="tns:dataEncoding" use="optional"/>
+					</s:extension>
+				</s:simpleContent>
+			</s:complexType>
+			<s:simpleType name="dataEncoding">
+				<s:restriction base="s:string">
+					<s:enumeration value="gzEnc"/>
+					<s:enumeration value="b64Enc"/>
+					<s:enumeration value="gzb64Enc"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name="ArrayOfPluginParameterStruct">
+				<s:sequence>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="PluginParameterStruct" nillable="true" type="tns:PluginParameterStruct" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="PluginParameterStruct">
+				<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="Label" type="s:string" />
+				<s:element minOccurs="1" maxOccurs="1" name="Data" type="s:string" />
+				</s:sequence>
+			</s:complexType>
+			<s:element name="DSAMverifySignatureResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="DSAMverifySignatureResult" type="tns:DSAMResponse"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DSAMverifySignatureExResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="DSAMverifySignatureResult" type="tns:DSAMResponse"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="DSAMResponse">
+				<s:sequence>
+					<s:element name="opStatus" type="s:int"/>
+					<s:element name="DSAMEnvelopeStatus" type="s:int"/>
+					<s:element name="requestId" type="s:string"/>
+					<s:element name="DSAMProofId" type="s:long"/>
+					<s:element name="documentList" type="tns:ArrayOfDocumentStruct"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ArrayOfDocumentStruct">
+				<s:sequence>
+					<s:element name="DocumentStruct" type="tns:DocumentStruct" nillable="true" maxOccurs="unbounded"/>
+					<!-- un DocumentStruct par documment -->
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="DocumentStruct">
+				<s:sequence>
+					<s:element name="documentId" type="s:string"/>
+					<s:element name="DVSDocumentStatus" type="s:int"/>
+					<s:element name="AMDocumentStatus" type="s:int"/>
+					<s:element name="DVSArchiveId" type="s:string"/>
+					<s:element name="signatureList" type="tns:ArrayOfSignatureStruct" minOccurs="0"/>
+					<s:element name="recordList" type="tns:ArrayOfRecordStruct" />
+					<s:element minOccurs="0" maxOccurs="1" name="pluginResponse" type="tns:ArrayOfPluginResponseStruct"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ArrayOfSignatureStruct">
+				<s:sequence>
+					<s:element name="SignatureStruct" type="tns:SignatureStruct" nillable="true" maxOccurs="unbounded"/>
+					<!-- un SignatureStruct par signature -->
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="SignatureStruct">
+				<s:sequence>
+					<s:element name="type" type="s:string"/>
+					<s:element name="subjectName" type="s:string"/>
+					<s:element name="DVSSignerStatus" type="s:unsignedLong"/>
+					<s:element name="certificate" type="s:string" minOccurs="0"/>
+					<s:element name="signedData" type="s:string" minOccurs="0"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ArrayOfRecordStruct">
+				<s:sequence>
+					<s:element name="RecordStruct" type="tns:RecordStruct" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- un RecordStruct par enregistrement -->
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="RecordStruct">
+				<s:sequence>
+					<s:element name="recordId" type="s:string" />
+					<s:element name="AMRecordStatus" type="s:int" />
+					<s:element name="criteriaList" type="tns:ArrayOfCriterionStruct" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ArrayOfCriterionStruct">
+				<s:sequence>
+					<s:element name="CriterionStruct" type="tns:CriterionStruct" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- un CriterionStruct par critere -->
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="CriterionStruct">
+				<s:sequence>
+					<s:element name="criterionName" type="s:string"/>
+					<s:element name="criterionType" type="s:string"/>
+					<s:element name="criterionValue" type="tns:CriterionType"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="CriterionType">
+				<s:choice>
+					<!-- les critères peuvent de type int, string, float ou long ... est-ce suffisant ? -->
+					<s:element name="value_string" type="s:string"/>
+					<s:element name="value_int" type="s:int"/>
+					<s:element name="value_long" type="s:long"/>
+					<s:element name="value_float" type="s:float"/>
+					<s:element name="value_double" type="s:double"/>
+					<s:element name="value_date" type="s:dateTime"/>
+				</s:choice>
+			</s:complexType>
+			<s:complexType name="ArrayOfPluginResponseStruct">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded" name="PluginResponseStruct" nillable="true" type="tns:PluginResponseStruct"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="PluginResponseStruct">
+				<s:sequence>
+					<s:element minOccurs="1" maxOccurs="1" name="Label" type="s:string"/>
+					<s:element minOccurs="1" maxOccurs="1" name="Response" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="GetDSAMProof">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="DSAMProofId" type="s:long"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetDSAMProofResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="DSAMProof" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</wsdl:types>
+	<wsdl:message name="DSAMverifySignatureSoapIn">
+		<wsdl:part name="parameters" element="tns:DSAMverifySignature"/>
+	</wsdl:message>
+	<wsdl:message name="DSAMverifySignatureSoapOut">
+		<wsdl:part name="parameters" element="tns:DSAMverifySignatureResponse"/>
+	</wsdl:message>
+	<wsdl:message name="DSAMverifySignatureExSoapIn">
+		<wsdl:part name="parameters" element="tns:DSAMverifySignatureEx"/>
+	</wsdl:message>
+	<wsdl:message name="DSAMverifySignatureExSoapOut">
+		<wsdl:part name="parameters" element="tns:DSAMverifySignatureExResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetDSAMProofSoapIn">
+		<wsdl:part name="parameters" element="tns:GetDSAMProof"/>
+	</wsdl:message>
+	<wsdl:message name="GetDSAMProofSoapOut">
+		<wsdl:part name="parameters" element="tns:GetDSAMProofResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="DSAMSoap">
+		<wsdl:operation name="DSAMverifySignature">
+			<wsdl:input message="tns:DSAMverifySignatureSoapIn"/>
+			<wsdl:output message="tns:DSAMverifySignatureSoapOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="DSAMverifySignatureEx">
+			<wsdl:input message="tns:DSAMverifySignatureExSoapIn"/>
+			<wsdl:output message="tns:DSAMverifySignatureExSoapOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetDSAMProof">
+			<wsdl:input message="tns:GetDSAMProofSoapIn"/>
+			<wsdl:output message="tns:GetDSAMProofSoapOut"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="DSAMSoap" type="tns:DSAMSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<wsdl:operation name="DSAMverifySignature">
+			<soap:operation soapAction="http://www.dictao.com/DSAM/Interface/DSAMverifySignature" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DSAMverifySignatureEx">
+			<soap:operation soapAction="http://www.dictao.com/DSAM/Interface/DSAMverifySignatureEx" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetDSAMProof">
+			<soap:operation soapAction="http://www.dictao.com/DSAM/Interface/GetDSAMProof" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="DSAM">
+		<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Dictao Signature Authorization Module v1.0</documentation>
+		<wsdl:port name="DSAMSoap" binding="tns:DSAMSoap">
+			<soap:address location="http://www.dictao.com/DSAM/Soap"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
