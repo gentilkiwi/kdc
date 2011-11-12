@@ -41,4 +41,9 @@ public class DataTypes {
         FileInputStream monFis = new FileInputStream(leFichier);
         return isToByteArrayOutputStream(monFis).toString();
     }
+
+    public static String osStringFromFile(File leFichier, String charset) throws FileNotFoundException, IOException {
+        FileInputStream monFis = new FileInputStream(leFichier);
+        return isToByteArrayOutputStream(monFis).toString(charset);
+    }
 }

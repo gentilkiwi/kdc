@@ -51,16 +51,30 @@ public class verifySignatureEx extends StandardWebService{
             System.out.println("properties    : " + properties);
             System.out.println();
 
-            DataBinary maBinaryData = new DataBinary();
-            maBinaryData.setDataFormat(null);
-            maBinaryData.setValue(DataTypes.osArrayFromFile(signature).toByteArray());
-
             DataType maSignature = new DataType();
-            maSignature.setBinaryValue(maBinaryData);
-
+            
+            if(isPlaintext) {
+                DataString maStringData = new DataString();
+                maStringData.setDataFormat(null);
+                
+                if(charset != null) {
+                    maStringData.setValue(DataTypes.osStringFromFile(signature, charset));
+                } else {
+                    maStringData.setValue(DataTypes.osStringFromFile(signature));
+                }
+                
+                maSignature.setValue(maStringData);
+                
+            } else {
+                DataBinary maBinaryData = new DataBinary();
+                maBinaryData.setDataFormat(null);
+                maBinaryData.setValue(DataTypes.osArrayFromFile(signature).toByteArray());
+            
+                maSignature.setBinaryValue(maBinaryData);
+            }
+            
             DataType maSignedData = new DataType();
             String strCertificat = new String();
-
             ArrayOfPluginParameterStruct mesParamsPlugins = new ArrayOfPluginParameterStruct();
             
             DVS monDVS = new DVS(wsdlUri, new QName("http://www.dictao.com/DVS/Interface", "DVS"));

@@ -46,7 +46,7 @@ public class signatureEx extends StandardWebService {
 
 
     /* A faire */
-    @Option(name = "--detachedSignature", required = false, usage = "Signature détachée")
+    @Option(name = "--detachedSignature", required = false, usage = "(optionel) Signature détachée")
     private File detachedSignature = null;
     @Option(name = "--signatureContext", required = false, usage = "(optionel) Contexte de signature (clés)")
     private String signatureContext = null;
@@ -70,14 +70,29 @@ public class signatureEx extends StandardWebService {
             System.out.println("signatureParameter : " + signatureParameter);
             System.out.println("signatureContext   : " + signatureContext);
             System.out.println();
-
-            DataBinary maBinaryData = new DataBinary();
-            maBinaryData.setDataFormat(null);
-            maBinaryData.setValue(DataTypes.osArrayFromFile(dataToSign).toByteArray());
-
+            
             DataType maSignature = new DataType();
-            maSignature.setBinaryValue(maBinaryData);
-
+            
+            if(isPlaintext) {
+                DataString maStringData = new DataString();
+                maStringData.setDataFormat(null);
+                
+                if(charset != null) {
+                    maStringData.setValue(DataTypes.osStringFromFile(dataToSign, charset));
+                } else {
+                    maStringData.setValue(DataTypes.osStringFromFile(dataToSign));
+                }
+                
+                maSignature.setValue(maStringData);
+                
+            } else {
+                DataBinary maBinaryData = new DataBinary();
+                maBinaryData.setDataFormat(null);
+                maBinaryData.setValue(DataTypes.osArrayFromFile(dataToSign).toByteArray());
+            
+                maSignature.setBinaryValue(maBinaryData);
+            }
+            
             DataType maDetached = new DataType();
             ContextType monContext = new ContextType();
 

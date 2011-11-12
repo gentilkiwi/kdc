@@ -13,7 +13,12 @@ public class StandardWebService extends HttpsWebServiceClient {
     protected String transactionId = null;
     @Option(name = "--tag", required = false, usage = "(optionnel) Champ libre d'usage")
     protected String tag = null;
-
+    
+    @Option(name = "--plaintext", required = false, usage = "(optionnel) Indique de passer les paramètres sous forme de chaînes plutôt que binaire")
+    protected boolean isPlaintext = false;
+    @Option(name = "--charset", required = false, usage = "(optionnel) Indique l\'encodage à utiliser")
+    protected String charset = null;
+    
     /* A faire */
     @Option(name = "--pluginParameter", required = false, usage = "(optionnel) Paramètres à passer en entréee au(x) plugin(s)")
     protected String pluginParameter = null;
