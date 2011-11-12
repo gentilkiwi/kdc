@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.dictao.com/D2S/Interface" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.dictao.com/D2S/Interface">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dictao.com/D2S/Interface">
+      <s:element name="signatureEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="transactionId" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="tag" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="dataToSign" type="tns:dataType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="detachedSignature" type="tns:dataType"/>
+            <s:element minOccurs="1" maxOccurs="1" name="signatureFormat" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="signatureType" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="signatureParameter" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="signatureContext" type="tns:contextType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="pluginParameter" type="tns:ArrayOfPluginParameterStruct"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="prepareSignatureEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="transactionId" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="tag" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="keyContainerFormat" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="keyContainerType" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="keyContainerParameter" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="properties" type="tns:dataType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="pluginParameter" type="tns:ArrayOfPluginParameterStruct"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="dataEncoding">
+        <s:restriction base="s:string">
+          <s:enumeration value="gzEnc"/>
+          <s:enumeration value="b64Enc"/>
+          <s:enumeration value="gzb64Enc"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="contextType">
+         <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contextId" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="certificate" type="tns:dataType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="certificateRequest" type="tns:dataType"/>
+            <s:element minOccurs="0" maxOccurs="1" name="wrappedPrivateKey" type="tns:dataType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="dataType">
+        <s:choice>
+          <s:element name="value" type="tns:dataString"/>
+          <s:element name="binaryValue" type="tns:dataBinary"/>
+        </s:choice>
+      </s:complexType>
+      <s:complexType name="dataString">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="dataFormat" type="tns:dataEncoding" use="optional"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="dataBinary">
+        <s:simpleContent>
+          <s:extension base="s:base64Binary">
+            <s:attribute name="dataFormat" type="tns:dataEncoding" use="optional"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfPluginParameterStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PluginParameterStruct" nillable="true" type="tns:PluginParameterStruct"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PluginParameterStruct">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Label" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="signatureExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="signatureExResult" type="tns:D2SResponseEx"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="D2SResponseEx">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="opStatus" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="D2SStatus" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="D2SArchiveId" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="D2SSignature" type="tns:dataType"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SignatureContext" type="tns:contextType"/>
+          <s:element minOccurs="0" maxOccurs="1" name="pluginResponse" type="tns:ArrayOfPluginResponseStruct"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="D2SArchiveResponseEx">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="opStatus" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="D2SProof" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="pluginResponse" type="tns:ArrayOfPluginResponseStruct"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPluginResponseStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PluginResponseStruct" nillable="true" type="tns:PluginResponseStruct"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PluginResponseStruct">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Label" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getArchiveEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="archiveId" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="pluginParameter" type="tns:ArrayOfPluginParameterStruct"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getArchiveExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getArchiveExResult" type="tns:D2SArchiveResponseEx"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="prepareSignatureExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="prepareSignatureExResult" type="tns:D2SResponseEx"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="signatureExSoapIn">
+    <wsdl:part name="parameters" element="tns:signatureEx"/>
+  </wsdl:message>
+  <wsdl:message name="signatureExSoapOut">
+    <wsdl:part name="parameters" element="tns:signatureExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getArchiveExSoapIn">
+    <wsdl:part name="parameters" element="tns:getArchiveEx"/>
+  </wsdl:message>
+  <wsdl:message name="getArchiveExSoapOut">
+    <wsdl:part name="parameters" element="tns:getArchiveExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="prepareSignatureExSoapIn">
+    <wsdl:part name="parameters" element="tns:prepareSignatureEx"/>
+  </wsdl:message>
+  <wsdl:message name="prepareSignatureExSoapOut">
+    <wsdl:part name="parameters" element="tns:prepareSignatureExResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="D2SSoap">
+    <wsdl:operation name="signatureEx">
+      <wsdl:input message="tns:signatureExSoapIn"/>
+      <wsdl:output message="tns:signatureExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getArchiveEx">
+      <wsdl:input message="tns:getArchiveExSoapIn"/>
+      <wsdl:output message="tns:getArchiveExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="prepareSignatureEx">
+      <wsdl:input message="tns:prepareSignatureExSoapIn"/>
+      <wsdl:output message="tns:prepareSignatureExSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="D2SSoap" type="tns:D2SSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="signatureEx">
+      <soap:operation soapAction="http://www.dictao.com/D2S/Interface/signatureEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getArchiveEx">
+      <soap:operation soapAction="http://www.dictao.com/D2S/Interface/getArchiveEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="prepareSignatureEx">
+      <soap:operation soapAction="http://www.dictao.com/D2S/Interface/prepareSignatureEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="D2S">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Dictao Signature Server v4.8</documentation>
+    <wsdl:port name="D2SSoap" binding="tns:D2SSoap">
+      <soap:address location="http://www.dictao.com/D2S/Soap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
