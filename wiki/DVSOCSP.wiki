@@ -1,3 +1,4 @@
+#summary Aide sur l'utilisation du client OCSP
 #labels DVS,OCSP
 =Appel au serveur OCSP=
 
