@@ -27,7 +27,7 @@ public class HttpWebServiceClient {
         CmdLineParser monParseur = new CmdLineParser(this);
         monParseur.parseArgument(arguments);
 
-        System.out.println("URI WebService: " + wsUri);
+        System.out.println("URI WebService : " + wsUri);
     }
 
     public void beginCall(BindingProvider monProvider) {

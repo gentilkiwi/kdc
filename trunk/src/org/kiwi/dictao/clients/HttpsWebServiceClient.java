@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.kohsuke.args4j.*;
 
 public class HttpsWebServiceClient extends HttpWebServiceClient {
-    @Option(name = "--keystore", required = true, usage = "Certificat de connexion au WebService")
+    @Option(name = "--keystore", required = false, usage = "(optionnel) Certificat de connexion au WebService")
     protected File keystoreFile = null;
     @Option(name = "--keystore-type", required = false, usage = "(optionnel) Type de certificat de connexion au WebService (JKS/PKCS12)")
     protected String keystoreType = "JKS";
@@ -26,8 +26,11 @@ public class HttpsWebServiceClient extends HttpWebServiceClient {
             System.setProperty("javax.net.ssl.trustStore", truststoreFile.getCanonicalPath());
         }
 
-        System.setProperty("javax.net.ssl.keyStore", keystoreFile.getCanonicalPath());
-        System.setProperty("javax.net.ssl.keyStorePassword", keystorePass);
-        System.setProperty("javax.net.ssl.keyStoreType", keystoreType);
+        if(keystoreFile != null)
+        {
+            System.setProperty("javax.net.ssl.keyStore", keystoreFile.getCanonicalPath());
+            System.setProperty("javax.net.ssl.keyStorePassword", keystorePass);
+            System.setProperty("javax.net.ssl.keyStoreType", keystoreType);
+        }
     }
 }

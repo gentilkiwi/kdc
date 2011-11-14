@@ -72,7 +72,6 @@ public class signatureEx extends StandardWebService {
             System.out.println();
             
             DataType maSignature = new DataType();
-            
             if(isPlaintext) {
                 DataString maStringData = new DataString();
                 maStringData.setDataFormat(null);
@@ -109,6 +108,7 @@ public class signatureEx extends StandardWebService {
             if(signedFile != null) {
                 System.out.println("Sortie dans : " + signedFile.getPath());
                 FileOutputStream monStream = new FileOutputStream(signedFile);
+                /* A revoir */
                 monStream.write(maReponse.getD2SSignature().getBinaryValue().getValue());
             } else {
                 System.out.println("Taille de la réponse signée : " + maReponse.getD2SSignature().getBinaryValue().getValue().length);
