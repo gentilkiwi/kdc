@@ -1,7 +1,7 @@
-package org.kiwi.dictao.responses.d2s.signatureEx;
+package org.kiwi.dictao.responses.d2slegacy.signatureEx;
 
 import org.kiwi.dictao.responses.GeneralResultat;
-import org.kiwi.dictao.webservices.d2s.*;
+import org.kiwi.dictao.webservices.d2slegacy.*;
 
 public class Resultat extends GeneralResultat<D2SResponseEx>{
 
@@ -17,7 +17,6 @@ public class Resultat extends GeneralResultat<D2SResponseEx>{
         String monRequestId = resultat.getRequestId();
         String monArchiveId = resultat.getD2SArchiveId();
         /* A traiter
-        resultat.getSignatureContext()
         DataType maSignature = resultat.getD2SSignature();
          */
         ArrayOfPluginResponseStruct monTabPluginResponses = resultat.getPluginResponse();
