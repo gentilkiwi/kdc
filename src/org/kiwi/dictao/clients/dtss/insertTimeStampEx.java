@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
 
 public class insertTimeStampEx extends StandardWebService{
     @Option(name = "--signature", required = true, usage = "Signature à horodater")
-    private File signature = null;
+    private File dataToSign = null;
     @Option(name = "--signatureParameter", required = false, usage = "Un ou plusieurs paramètres de signature, dépendants du format de signature demandé")
     private String signatureParameter = null;
 
@@ -33,17 +33,31 @@ public class insertTimeStampEx extends StandardWebService{
                 wsdlUri = getClass().getResource("DTSSInterfaceFrontEnd.wsdl");
             }
             
-            System.out.println("signature     : " + signature.getPath());
+            System.out.println("signature          : " + dataToSign.getPath());
             System.out.println("signatureParameter : " + signatureParameter);
             System.out.println();
 
-            DataBinary maBinaryData = new DataBinary();
-            maBinaryData.setDataFormat(null);
-            maBinaryData.setValue(DataTypes.osArrayFromFile(signature).toByteArray());
-
             DataType maSignature = new DataType();
-            maSignature.setBinaryValue(maBinaryData);
-
+            if(isPlaintext) {
+                DataString maStringData = new DataString();
+                maStringData.setDataFormat(null);
+                
+                if(charset != null) {
+                    maStringData.setValue(DataTypes.osStringFromFile(dataToSign, charset));
+                } else {
+                    maStringData.setValue(DataTypes.osStringFromFile(dataToSign));
+                }
+                
+                maSignature.setValue(maStringData);
+                
+            } else {
+                DataBinary maBinaryData = new DataBinary();
+                maBinaryData.setDataFormat(null);
+                maBinaryData.setValue(DataTypes.osArrayFromFile(dataToSign).toByteArray());
+            
+                maSignature.setBinaryValue(maBinaryData);
+            }
+            
             ArrayOfPluginParameterStruct mesParamsPlugins = new ArrayOfPluginParameterStruct();
 
             DTSS monDTSS = new DTSS(wsdlUri, new QName("http://www.dictao.com/DTSS/Interface", "DTSS"));

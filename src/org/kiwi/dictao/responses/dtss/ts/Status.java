@@ -1,4 +1,4 @@
-package org.kiwi.dictao.responses.dvs.ocsp;
+package org.kiwi.dictao.responses.dtss.ts;
 
 import org.kiwi.dictao.responses.*;
 import org.kiwi.dictao.responses.Reponse.TypeReponse;
@@ -14,22 +14,19 @@ public class Status extends ListeReponses<Integer>{
                 maListeDeReponses.add(new Reponse(TypeReponse.SUCCES, "Succès"));
                 break;
             case 1:
-                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Requête malformée"));
+                maListeDeReponses.add(new Reponse(TypeReponse.SUCCES, "Succès, avec modifications"));
                 break;
             case 2:
-                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Erreur interne"));
+                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Rejeté"));
                 break;
             case 3:
-                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Serveur occupé, réessayer plus tard"));
+                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "En attente"));
                 break;
             case 4:
-                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Erreur normalement attribuée (?)"));
+                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Révocation imminente"));
                 break;
             case 5:
-                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "La requète doit être signée"));
-                break;
-            case 6:
-                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Non-autorisée"));
+                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Révoqué"));
                 break;
             default:
                 maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Erreur normalement non référencée (hors protocole)"));
