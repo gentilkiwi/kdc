@@ -28,7 +28,7 @@ public class verifySignature extends StandardWebService{
             monParseur.parseArgument(arguments);
 
             if(wsdlUri == null) {
-                wsdlUri = getClass().getResource("DSAMInterfaceFrontEnd.wsdl");
+                wsdlUri = getClass().getResource("DSAMInterface.wsdl");
             }
 
             System.out.println("signature     : " + signature.getPath());
