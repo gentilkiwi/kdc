@@ -33,10 +33,11 @@ public class Resultat extends GeneralResultat<DVSResponseEx> {
             for (DVSDetailedStatusStruct monDVSDetailedStatus : monTabDetailledStatus.getDVSDetailedStatusStruct()) {
                 monBufferCertificates.append("\nDonnée signée\n-------------\n");
                 BigInteger monDVSCertificateStatus = monDVSDetailedStatus.getDVSStatus();
-
                 monBufferCertificates.append("Type de signature : ").append(monDVSDetailedStatus.getType()).append("\n");
                 monBufferCertificates.append("DN Signataire : ").append(monDVSDetailedStatus.getSubjectName()).append("\n");
                 monBufferCertificates.append(new DVSStatus(monDVSCertificateStatus));
+                monBufferCertificates.append("Certificat : ").append(monDVSDetailedStatus.getCertificate()).append("\n");
+                monBufferCertificates.append("Données signées : ").append(monDVSDetailedStatus.getSignedData()).append("\n");
                 monBufferCertificates.append("Statut étendue : ").append(monDVSDetailedStatus.getExtendedStatus()).append("\n");
             }
             monBuffer.append(monBufferCertificates.toString().replaceAll("(?m)(^)", "\t$1"));
