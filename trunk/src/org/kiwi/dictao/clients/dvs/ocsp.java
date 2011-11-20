@@ -25,7 +25,11 @@ import org.kiwi.utils.Affichages;
 public class ocsp extends HttpsWebServiceClient {
     @Option(name = "--certificat", required = true, usage = "Certificat à vérifier")
     private File certFile = null;
-    @Option(name = "--ca-file", required = true, usage = "Emetteur du certificat à vérifier")
+    
+    @Option(name = "--issuer-file", required = true, usage = "Emetteur du certificat à vérifier")
+    private File issuerFile = null;
+    
+    @Option(name = "--ca-file", required = false, usage = "(optionnel) Emetteur du certificat de signature OCSP")
     private File caFile = null;
     @Option(name = "--va-file", required = false, usage = "(optionnel) Certificat publique de signature OCSP")
     private File vaFile = null;
@@ -40,11 +44,16 @@ public class ocsp extends HttpsWebServiceClient {
             monParseur.parseArgument(arguments);
 
             BigInteger certSerial = Affichages.getAndDisplayCertificate(certFile, "Certificat à vérifier").getSerialNumber();
-            X509Certificate issuerCertif = Affichages.getAndDisplayCertificate(caFile, "Certificat émetteur");
+            X509Certificate issuerCertif = Affichages.getAndDisplayCertificate(issuerFile, "Certificat émetteur");
             
             PublicKey maCleDeValidation = null;
             if (vaFile != null) {
                 maCleDeValidation = Affichages.getAndDisplayCertificate(vaFile, "Certificat de signature OCSP (validation)").getPublicKey();
+            }
+            
+            X509Certificate monCertificatEmeteurSignature = null;
+            if( caFile != null) {
+                monCertificatEmeteurSignature = Affichages.getAndDisplayCertificate(caFile, "Certificat émetteur de signature OCSP (validation)");
             }
 
             CertificateID id = new CertificateID(CertificateID.HASH_SHA1, issuerCertif, certSerial);
@@ -53,13 +62,12 @@ public class ocsp extends HttpsWebServiceClient {
             OCSPReqGenerator generator = generateOCSPRequest();
             generator.addRequest(id);
             OCSPReq requete = generator.generate();
-            //System.out.println("URL du serveur OCSP        : " + wsUri);
 
             beginCall(null);
             OCSPResp maReponse = new OCSPResp(Connections.getMyResponse(wsUri, requete.getEncoded(), "application/ocsp-request", "application/ocsp-response"));
             endCall();
             
-            System.out.println(new Resultat(maReponse, maCleDeValidation));
+            System.out.println(new Resultat(maReponse, maCleDeValidation, monCertificatEmeteurSignature));
 
         } catch (CmdLineException ex) {
             System.err.println("Erreur : " + ex.getMessage());
