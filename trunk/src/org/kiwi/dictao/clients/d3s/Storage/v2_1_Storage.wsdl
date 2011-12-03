@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions name="Storage" 
+             targetNamespace="http://www.dictao.com/d3s/wsdl/v2/Storage"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:v2_1="http://www.dictao.com/d3s/wsdl/v2.1/Storage"
+             xmlns:tns="http://www.dictao.com/d3s/wsdl/v2/Storage"
+             xmlns:com="http://www.dictao.com/d3s/xsd/v2010_10/Common"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!-- types -->
+    <types>
+        <schema targetNamespace="http://www.dictao.com/d3s/wsdl/v2.1/Storage"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:com="http://www.dictao.com/d3s/xsd/v2010_10/Common"
+                xmlns:tns="http://www.dictao.com/d3s/wsdl/v2.1/Storage">
+
+            <import namespace="http://www.dictao.com/d3s/xsd/v2010_10/Common"
+                    schemaLocation="./v2010_10/Common.xsd"/>
+
+            <!-- Messages elements definition -->
+            <element name="read" type="tns:Read"/>
+            <element name="readResponse" type="tns:ReadResponse"/>
+            <element name="readResponseContent" type="tns:ReadResponseContent"/>
+            <element name="write" type="tns:Write"/>
+            <element name="writeResponse" type="tns:WriteResponse"/>
+            <element name="update" type="tns:Update"/>
+            <element name="updateResponse" type="tns:UpdateResponse"/>
+            <element name="delete" type="tns:Delete"/>
+            <element name="deleteResponse" type="tns:DeleteResponse"/>
+
+            <element name="openForRead" type="tns:OpenForRead"/>
+            <element name="openForReadResponse" type="tns:OpenForReadResponse"/>
+            <element name="openForWrite" type="tns:OpenForWrite"/>
+            <element name="openForWriteResponse" type="tns:OpenForWriteResponse"/>
+            <element name="openForUpdate" type="tns:OpenForUpdate"/>
+            <element name="openForUpdateResponse" type="tns:OpenForUpdateResponse"/>
+            <element name="close" type="tns:Close"/>
+            <element name="closeResponse" type="tns:CloseResponse"/>
+
+            <element name="EnvironmentFaultElement" type="com:EnvironmentFaultInfo"/>
+            <element name="UserFaultElement" type="com:UserFaultInfo"/>
+
+            <!-- Messages Types definition -->
+            <!-- read method -->
+            <complexType name="Read">
+                <sequence>
+                    <element ref="com:securityToken"/>
+                    <element name="depositProof" type="com:DepositProof"/>
+                </sequence>
+            </complexType>
+            <complexType name="ReadResponseContent">
+                <sequence>
+                    <element ref="tns:readResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="ReadResponse">
+                <sequence>
+                    <element name="status" type="com:HashComparisonStatus"/>
+                    <element name="data" type="base64Binary" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- write method -->
+            <complexType name="Write">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="containerPath" type="com:Path"/>
+                    <element ref="com:securityToken"/>
+                    <element ref="com:certificates"/>
+                    <element ref="com:metadatas"/>
+                    <element name="data" type="base64Binary"/>
+                </sequence>
+            </complexType>
+            <complexType name="WriteResponse">
+                <sequence>
+                    <element name="resourcePath" type="com:Path" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- update method -->
+            <complexType name="Update">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element ref="com:securityToken"/>
+                    <element ref="com:certificates"/>
+                    <element ref="com:metadatas"/>
+                    <element name="data" type="base64Binary"/>
+                </sequence>
+            </complexType>
+            <complexType name="UpdateResponse">
+                <sequence>
+                    <element name="updatedResourcePath" type="com:Path" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- delete method -->
+            <complexType name="Delete">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element ref="com:securityToken"/>
+                </sequence>
+            </complexType>
+            <complexType name="DeleteResponse">
+            </complexType>
+            <!-- openForRead method -->
+            <complexType name="OpenForRead">
+                <sequence>
+                    <element ref="com:securityToken"/>
+                    <element name="depositProof" type="com:DepositProof"/>
+                </sequence>
+            </complexType>
+            <complexType name="OpenForReadResponse">
+                <sequence>
+                    <element name="url" type="anyURI" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- openForWrite method -->
+            <complexType name="OpenForWrite">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="containerPath" type="com:Path"/>
+                    <element ref="com:securityToken"/>
+                    <element ref="com:certificates"/>
+                    <element ref="com:metadatas"/>
+                </sequence>
+            </complexType>
+            <complexType name="OpenForWriteResponse">
+                <sequence>
+                    <element name="url" type="anyURI" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- openForWrite method -->
+            <complexType name="OpenForUpdate">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element ref="com:securityToken"/>
+                    <element ref="com:certificates"/>
+                    <element ref="com:metadatas"/>
+                </sequence>
+            </complexType>
+            <complexType name="OpenForUpdateResponse">
+                <sequence>
+                    <element name="url" type="anyURI" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- close method -->
+            <complexType name="Close">
+                <sequence>
+                    <element name="url" type="anyURI"/>
+                </sequence>
+            </complexType>
+            <complexType name="CloseResponse">
+            </complexType>
+        </schema>
+    </types>
+    <message name="read">
+        <part name="parameter" element="v2_1:read"/>
+    </message>
+    <message name="readResponse">
+        <part name="parameter" element="v2_1:readResponse"/>
+    </message>
+    <message name="readResponseContent">
+        <part name="parameter" element="v2_1:readResponseContent"/>
+    </message>
+    <message name="write">
+        <part name="parameter" element="v2_1:write"/>
+    </message>
+    <message name="writeResponse">
+        <part name="parameter" element="v2_1:writeResponse"/>
+    </message>
+    <message name="update">
+        <part name="parameter" element="v2_1:update"/>
+    </message>
+    <message name="updateResponse">
+        <part name="parameter" element="v2_1:updateResponse"/>
+    </message>
+    <message name="delete">
+        <part name="parameter" element="v2_1:delete"/>
+    </message>
+    <message name="deleteResponse">
+        <part name="parameter" element="v2_1:deleteResponse"/>
+    </message>
+    <message name="openForRead">
+        <part name="parameter" element="v2_1:openForRead"/>
+    </message>
+    <message name="openForReadResponse">
+        <part name="parameter" element="v2_1:openForReadResponse"/>
+    </message>
+    <message name="openForWrite">
+        <part name="parameter" element="v2_1:openForWrite"/>
+    </message>
+    <message name="openForWriteResponse">
+        <part name="parameter" element="v2_1:openForWriteResponse"/>
+    </message>
+    <message name="openForUpdate">
+        <part name="parameter" element="v2_1:openForUpdate"/>
+    </message>
+    <message name="openForUpdateResponse">
+        <part name="parameter" element="v2_1:openForUpdateResponse"/>
+    </message>
+    <message name="close">
+        <part name="parameter" element="v2_1:close"/>
+    </message>
+    <message name="closeResponse">
+        <part name="parameter" element="v2_1:closeResponse"/>
+    </message>
+    <message name="EnvironmentFaultException">
+        <part name="EnvironmentFaultInfo" element="v2_1:EnvironmentFaultElement"/>
+    </message>
+    <message name="UserFaultException">
+        <part name="UserFaultInfo" element="v2_1:UserFaultElement"/>
+    </message>
+    <portType name="SecretPort">
+        <operation name="read">
+            <input name="read" message="tns:read"/>
+            <output name="readResponseContent" message="tns:readResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="write">
+            <input name="write" message="tns:write"/>
+            <output name="writeResponse" message="tns:writeResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="update">
+            <input name="update" message="tns:update"/>
+            <output name="updateResponse" message="tns:updateResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="delete">
+            <input name="delete" message="tns:delete"/>
+            <output name="deleteResponse" message="tns:deleteResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="openForRead">
+            <input name="openForRead" message="tns:openForRead"/>
+            <output name="openForReadResponse" message="tns:openForReadResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="openForWrite">
+            <input name="openForWrite" message="tns:openForWrite"/>
+            <output name="openForWriteResponse" message="tns:openForWriteResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="openForUpdate">
+            <input name="openForUpdate" message="tns:openForUpdate"/>
+            <output name="openForUpdateResponse" message="tns:openForUpdateResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="close">
+            <input name="close" message="tns:close"/>
+            <output name="closeResponse" message="tns:closeResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+    </portType>
+    <binding name="Secret_SOAPBinding" type="tns:SecretPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="read">
+            <soap:operation soapAction="Secret:read" style="document"/>
+            <input name="read">
+                <soap:body use="literal"/>
+            </input>
+            <output name="readResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="write">
+            <soap:operation soapAction="Secret:write" style="document"/>
+            <input name="write">
+                <soap:body use="literal"/>
+            </input>
+            <output name="writeResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="update">
+            <soap:operation soapAction="Secret:update" style="document"/>
+            <input name="update">
+                <soap:body use="literal"/>
+            </input>
+            <output name="updateResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="delete">
+            <soap:operation soapAction="Secret:delete" style="document"/>
+            <input name="delete">
+                <soap:body use="literal"/>
+            </input>
+            <output name="deleteResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="openForRead">
+            <soap:operation soapAction="Secret:openForRead" style="document"/>
+            <input name="openForRead">
+                <soap:body use="literal"/>
+            </input>
+            <output name="openForReadResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="openForWrite">
+            <soap:operation soapAction="Secret:openForWrite" style="document"/>
+            <input name="openForWrite">
+                <soap:body use="literal"/>
+            </input>
+            <output name="openForWriteResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="openForUpdate">
+            <soap:operation soapAction="Secret:openForUpdate" style="document"/>
+            <input name="openForUpdate">
+                <soap:body use="literal"/>
+            </input>
+            <output name="openForUpdateResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="close">
+            <soap:operation soapAction="Secret:close" style="document"/>
+            <input name="close">
+                <soap:body use="literal"/>
+            </input>
+            <output name="closeResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="Storage">
+        <port name="SecretPort" binding="tns:Secret_SOAPBinding">
+            <soap:address location="http://d3s.dictao.com/dictao-d3s-storage"/>
+        </port>
+    </service>
+</definitions>

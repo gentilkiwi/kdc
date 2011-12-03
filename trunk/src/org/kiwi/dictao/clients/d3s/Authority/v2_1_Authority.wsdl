@@ -1,0 +1,1675 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions name="Authority"
+             targetNamespace="http://www.dictao.com/d3s/wsdl/v2/Authority"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:v2_1="http://www.dictao.com/d3s/wsdl/v2.1/Authority"
+             xmlns:tns="http://www.dictao.com/d3s/wsdl/v2/Authority"
+             xmlns:com="http://www.dictao.com/d3s/xsd/v2010_10/Common"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:ns="http://www.w3.org/2000/09/xmldsig#"
+             xmlns:ns1="http://www.w3.org/2001/04/xmlenc#">
+    <!-- types -->
+    <types>
+        <schema targetNamespace="http://www.dictao.com/d3s/wsdl/v2.1/Authority"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:com="http://www.dictao.com/d3s/xsd/v2010_10/Common"
+                xmlns:tns="http://www.dictao.com/d3s/wsdl/v2.1/Authority">
+
+            <import namespace="http://www.dictao.com/d3s/xsd/v2010_10/Common"
+                    schemaLocation="./v2010_10/Common.xsd"/>
+
+            <!-- Messages elements definition -->
+            <element name="createSafebox" type="tns:CreateSafebox"/>
+            <element name="createSafeboxResponse" type="tns:CreateResponse"/>
+            <element name="readSafebox" type="tns:Read"/>
+            <element name="readSafeboxResponse" type="tns:ReadSafeboxResponse"/>
+            <element name="updateSafebox" type="tns:UpdateSafebox"/>
+            <element name="updateSafeboxResponse" type="tns:UpdateResponse"/>
+            <element name="deleteSafebox" type="tns:Delete"/>
+            <element name="deleteSafeboxResponse" type="tns:DeleteResponse"/>
+            <element name="findSafeboxes" type="tns:FindSafeboxes"/>
+            <element name="findSafeboxesResponse" type="tns:FindSafeboxesResponse"/>
+            <element name="findSafeboxesResponseContent" type="tns:FindSafeboxesResponseContent"/>
+            <element name="nextSafeboxes" type="tns:NextSafeboxes"/>
+            <element name="nextSafeboxesResponseContent" type="tns:NextSafeboxesResponseContent"/>
+
+            <element name="changeAccessPermissions" type="tns:ChangeAccessPermissions"/>
+            <element name="changeAccessPermissionsResponse" type="tns:ChangeAccessPermissionsResponse"/>
+
+            <element name="createOrgunit" type="tns:CreateOrgunit"/>
+            <element name="createOrgunitResponse" type="tns:CreateResponse"/>
+            <element name="readOrgunit" type="tns:Read"/>
+            <element name="readOrgunitResponse" type="tns:ReadOrgunitResponse"/>
+            <element name="updateOrgunit" type="tns:UpdateOrgunit"/>
+            <element name="updateOrgunitResponse" type="tns:UpdateResponse"/>
+            <element name="deleteOrgunit" type="tns:Delete"/>
+            <element name="deleteOrgunitResponse" type="tns:DeleteResponse"/>
+
+            <element name="createUser" type="tns:CreateUser"/>
+            <element name="createUserResponse" type="tns:CreateResponse"/>
+            <element name="readUser" type="tns:Read"/>
+            <element name="readUserResponse" type="tns:ReadUserResponse"/>
+            <element name="updateUser" type="tns:UpdateUser"/>
+            <element name="updateUserResponse" type="tns:UpdateResponse"/>
+            <element name="deleteUser" type="tns:Delete"/>
+            <element name="deleteUserResponse" type="tns:DeleteResponse"/>
+            <element name="addAuthorizations" type="tns:AddAuthorizations"/>
+            <element name="addAuthorizationsResponse" type="tns:AddAuthorizationsResponse"/>
+            <element name="removeAuthorizations" type="tns:RemoveAuthorizations"/>
+            <element name="removeAuthorizationsResponse" type="tns:RemoveAuthorizationsResponse"/>
+
+            <element name="createDeposit" type="tns:CreateDeposit"/>
+            <element name="createDepositResponse" type="tns:CreateResponse"/>
+            <element name="readDeposit" type="tns:Read"/>
+            <element name="readDepositResponse" type="tns:ReadDepositResponse"/>
+            <element name="updateDepositMetadata" type="tns:UpdateDepositMetadata"/>
+            <element name="updateDepositMetadataResponse" type="tns:UpdateResponse"/>
+            <element name="updateDeposit" type="tns:UpdateDeposit"/>
+            <element name="updateDepositResponse" type="tns:UpdateResponse"/>
+            <element name="deleteDeposit" type="tns:Delete"/>
+            <element name="deleteDepositResponse" type="tns:DeleteResponse"/>
+            <element name="discardDeposit" type="tns:DiscardDeposit"/>
+            <element name="discardDepositResponse" type="tns:DiscardDepositResponse"/>
+            <element name="restoreDeposit" type="tns:RestoreDeposit"/>
+            <element name="restoreDepositResponse" type="tns:RestoreDepositResponse"/>
+            <element name="findDeposits" type="tns:FindDeposits"/>
+            <element name="findDepositsResponse" type="tns:FindDepositsResponse"/>
+            <element name="findDepositsResponseContent" type="tns:FindDepositsResponseContent"/>
+            <element name="nextDeposits" type="tns:NextDeposits"/>
+            <element name="nextDepositsResponseContent" type="tns:NextDepositsResponseContent"/>
+            <element name="importDeposit" type="tns:ImportDeposit"/>
+            <element name="importDepositResponse" type="tns:ImportDepositResponse"/>
+            <element name="importDepositResponseContent" type="tns:ImportDepositResponseContent"/>
+
+            <element name="createCertificate" type="tns:CreateCertificate"/>
+            <element name="createCertificateResponse" type="tns:CreateResponse"/>
+            <element name="readCertificate" type="tns:Read"/>
+            <element name="readCertificateResponse" type="tns:ReadCertificateResponse"/>
+            <element name="updateCertificate" type="tns:UpdateCertificate"/>
+            <element name="updateCertificateResponse" type="tns:UpdateResponse"/>
+            <element name="deleteCertificate" type="tns:Delete"/>
+            <element name="deleteCertificateResponse" type="tns:DeleteResponse"/>
+            <element name="findCertificates" type="tns:FindCertificates"/>
+            <element name="findCertificatesResponse" type="tns:FindCertificatesResponse"/>
+            <element name="findCertificatesResponseContent" type="tns:FindCertificatesResponseContent"/>
+            <element name="nextCertificates" type="tns:NextCertificates"/>
+            <element name="nextCertificatesResponseContent" type="tns:NextCertificatesResponseContent"/>
+
+            <element name="grantRead" type="tns:GrantRead"/>
+            <element name="grantReadResponse" type="tns:GrantReadResponse"/>
+            <element name="grantReadResponseContent" type="tns:GrantReadResponseContent"/>
+            <element name="grantWrite" type="tns:GrantWrite"/>
+            <element name="grantWriteResponse" type="tns:GrantWriteResponse"/>
+            <element name="grantWriteResponseContent" type="tns:GrantWriteResponseContent"/>
+            <element name="grantUpdate" type="tns:GrantUpdate"/>
+            <element name="grantUpdateResponse" type="tns:GrantUpdateResponse"/>
+            <element name="grantUpdateResponseContent" type="tns:GrantUpdateResponseContent"/>
+            <element name="grantDelete" type="tns:GrantDelete"/>
+            <element name="grantDeleteResponse" type="tns:GrantDeleteResponse"/>
+            <element name="grantDeleteResponseContent" type="tns:GrantDeleteResponseContent"/>
+            <element name="grantExport" type="tns:GrantExport"/>
+            <element name="grantExportResponse" type="tns:GrantExportResponse"/>
+
+            <element name="EnvironmentFaultElement" type="com:EnvironmentFaultInfo"/>
+            <element name="UserFaultElement" type="com:UserFaultInfo"/>
+
+            <!-- generic type definition -->
+            <!-- Creation response -->
+            <complexType name="CreateResponse">
+                <sequence>
+                    <element name="createdResourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <!-- Read request -->
+            <complexType name="Read">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <!-- Update response -->
+            <complexType name="UpdateResponse">
+                <sequence>
+                    <element name="updatedResourcePath" type="com:Path" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- Delete request -->
+            <complexType name="Delete">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <!-- Delete response -->
+            <complexType name="DeleteResponse"/>
+            <!-- DiscardDeposit request -->
+            <complexType name="DiscardDeposit">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <!-- DiscardDeposit response -->
+            <complexType name="DiscardDepositResponse"/>
+            <!-- RestoreDeposit request -->
+            <complexType name="RestoreDeposit">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <!-- RestoreDeposit response -->
+            <complexType name="RestoreDepositResponse"/>
+            <!-- ChangeAccessPermissions request -->
+            <complexType name="ChangeAccessPermissions">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element name="AccessPermissions" type="com:AccessPermissions"/>
+                </sequence>
+            </complexType>
+            <!-- ChangeAccessPermissions response -->
+            <complexType name="ChangeAccessPermissionsResponse"/>
+
+            <!-- Safebox specific types -->
+            <!-- create safebox method -->
+            <complexType name="CreateSafebox">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="containerPath" type="com:Path"/>
+                    <element name="safebox" type="com:Safebox"/>
+                    <element name="defaultOrgunitPath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <!-- read safebox method -->
+            <complexType name="ReadSafeboxResponse">
+                <sequence>
+                    <element name="safebox" type="com:Safebox" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- update safebox method -->
+            <complexType name="UpdateSafebox">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element name="safebox" type="com:Safebox"/>
+                </sequence>
+            </complexType>
+            <!-- find safeboxes method -->
+            <complexType name="FindSafeboxes">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="searchPath" type="com:Path"/>
+                    <element name="criteria" type="com:Criterion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="orderBy" type="com:OrderBy" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                    <element name="maxResult" type="int"/>
+                </sequence>
+            </complexType>
+            <complexType name="FindSafeboxesResponseContent">
+                <sequence>
+                    <element ref="tns:findSafeboxesResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="FindSafeboxesResponse">
+                <sequence>
+                    <element name="cursor" type="base64Binary"/>
+                    <element name="Safeboxes" type="com:Safebox" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="NextSafeboxes">
+                <sequence>
+                    <element name="cursor" type="base64Binary"/>
+                </sequence>
+            </complexType>
+            <complexType name="NextSafeboxesResponseContent">
+                <sequence>
+                    <element ref="tns:findSafeboxesResponse"/>
+                </sequence>
+            </complexType>
+
+            <!-- Orgunit specific types -->
+            <!-- create orgunit method -->
+            <complexType name="CreateOrgunit">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="containerPath" type="com:Path"/>
+                    <element name="orgunit" type="com:Orgunit"/>
+                    <element name="firstUserPath" type="com:Path"/>
+                    <element name="firstUserRolePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <!-- read orgunit method -->
+            <complexType name="ReadOrgunitResponse">
+                <sequence>
+                    <element name="orgunit" type="com:Orgunit" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- update Orgunit method -->
+            <complexType name="UpdateOrgunit">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element name="orgunit" type="com:Orgunit"/>
+                </sequence>
+            </complexType>
+
+            <!-- User specific types -->
+            <!-- create User method -->
+            <complexType name="CreateUser">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="user" type="com:User"/>
+                </sequence>
+            </complexType>
+            <!-- read User method -->
+            <complexType name="ReadUserResponse">
+                <sequence>
+                    <element name="user" type="com:User" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- update User method -->
+            <complexType name="UpdateUser">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element name="user" type="com:User"/>
+                </sequence>
+            </complexType>
+            <!-- add authz method -->
+            <complexType name="AddAuthorizations">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="userPath" type="com:Path"/>
+                    <element name="authorizations" type="com:Authorizations"/>
+                </sequence>
+            </complexType>
+            <!-- add authz response method -->
+            <complexType name="AddAuthorizationsResponse"/>
+            <!-- remove authz method -->
+            <complexType name="RemoveAuthorizations">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="userPath" type="com:Path"/>
+                    <element name="authorizations" type="com:Authorizations"/>
+                </sequence>
+            </complexType>
+            <!-- remove authz response method -->
+            <complexType name="RemoveAuthorizationsResponse"/>
+
+            <!-- Deposit specific types -->
+            <!-- create Deposit method -->
+            <complexType name="CreateDeposit">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="containerPath" type="com:Path"/>
+                    <element name="deposit" type="com:Deposit"/>
+                </sequence>
+            </complexType>
+            <!-- read Deposit method -->
+            <complexType name="ReadDepositResponse">
+                <sequence>
+                    <element name="deposit" type="com:Deposit" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- update Deposit method -->
+            <complexType name="UpdateDepositMetadata">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element name="deposit" type="com:Deposit"/>
+                </sequence>
+            </complexType>
+            <complexType name="UpdateDeposit">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element name="deposit" type="com:Deposit"/>
+                </sequence>
+            </complexType>
+            <!-- find deposits method -->
+            <complexType name="FindDeposits">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="searchPath" type="com:Path"/>
+                    <element name="criteria" type="com:Criterion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="orderBy" type="com:OrderBy" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                    <element name="maxResult" type="int"/>
+                </sequence>
+            </complexType>
+            <complexType name="FindDepositsResponseContent">
+                <sequence>
+                    <element ref="tns:findDepositsResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="FindDepositsResponse">
+                <sequence>
+                    <element name="cursor" type="base64Binary"/>
+                    <element name="deposits" type="com:Deposit" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="NextDeposits">
+                <sequence>
+                    <element name="cursor" type="base64Binary"/>
+                </sequence>
+            </complexType>
+            <complexType name="NextDepositsResponseContent">
+                <sequence>
+                    <element ref="tns:findDepositsResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="ImportDeposit">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="containerPath" type="com:Path"/>
+                    <element name="depositProof" type="com:DepositProof"/>
+                    <element name="isCurrentVersion" type="boolean"/>
+                </sequence>
+            </complexType>
+            <complexType name="ImportDepositResponseContent">
+                <sequence>
+                    <element ref="tns:importDepositResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="ImportDepositResponse">
+                <sequence>
+                    <element name="status" type="com:ValidationStatus"/>
+                    <element name="resourcePath" type="com:Path" nillable="false" minOccurs="0"/>
+                </sequence>
+            </complexType>
+
+            <!-- Certificate specific types -->
+            <!-- create Certificate method -->
+            <complexType name="CreateCertificate">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="certificate" type="com:Certificate"/>
+                </sequence>
+            </complexType>
+            <!-- read Certificate method -->
+            <complexType name="ReadCertificateResponse">
+                <sequence>
+                    <element name="certificate" type="com:Certificate" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- update Certificate method -->
+            <complexType name="UpdateCertificate">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                    <element name="certificate" type="com:Certificate"/>
+                </sequence>
+            </complexType>
+            <complexType name="FindCertificates">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="searchPath" type="com:Path"/>
+                    <element name="criteria" type="com:Criterion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="orderBy" type="com:OrderBy" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                    <element name="maxResult" type="int"/>
+                </sequence>
+            </complexType>
+            <complexType name="FindCertificatesResponseContent">
+                <sequence>
+                    <element ref="tns:findCertificatesResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="FindCertificatesResponse">
+                <sequence>
+                    <element name="cursor" type="base64Binary"/>
+                    <element name="Certificates" type="com:Certificate" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <complexType name="NextCertificates">
+                <sequence>
+                    <element name="cursor" type="base64Binary"/>
+                </sequence>
+            </complexType>
+            <complexType name="NextCertificatesResponseContent">
+                <sequence>
+                    <element ref="tns:findCertificatesResponse"/>
+                </sequence>
+            </complexType>
+
+            <!-- Secret specific types -->
+            <!-- grantRead response -->
+            <complexType name="GrantRead">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantReadResponseContent">
+                <sequence>
+                    <element ref="tns:grantReadResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantReadResponse">
+                <sequence>
+                    <element name="status" type="com:ValidationStatus"/>
+                    <element name="storageURL" type="string" minOccurs="0"/>
+                    <element ref="com:securityToken" minOccurs="0"/>
+                    <element name="depositProof" type="com:DepositProof" minOccurs="0"/>
+                    <element name="dataRefs" type="com:DataRef" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+            <!-- grantWrite response -->
+            <complexType name="GrantWrite">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="containerPath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantWriteResponseContent">
+                <sequence>
+                    <element ref="tns:grantWriteResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantWriteResponse">
+                <sequence>
+                    <element name="storageURL" type="string" minOccurs="0"/>
+                    <element ref="com:securityToken" minOccurs="0"/>
+                    <element ref="com:certificates" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- grantWrite response -->
+            <complexType name="GrantUpdate">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantUpdateResponseContent">
+                <sequence>
+                    <element ref="tns:grantUpdateResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantUpdateResponse">
+                <sequence>
+                    <element name="storageURL" type="string" minOccurs="0"/>
+                    <element ref="com:securityToken" minOccurs="0"/>
+                    <element ref="com:certificates" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- grantDelete response -->
+            <complexType name="GrantDelete">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantDeleteResponseContent">
+                <sequence>
+                    <element ref="tns:grantDeleteResponse"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantDeleteResponse">
+                <sequence>
+                    <element name="storageURL" type="string" minOccurs="0"/>
+                    <element ref="com:securityToken" minOccurs="0"/>
+                </sequence>
+            </complexType>
+            <!-- grantExport response -->
+            <complexType name="GrantExport">
+                <sequence>
+                    <element name="applicantPath" type="com:Path"/>
+                    <element name="motivation" type="string" minOccurs="0"/>
+                    <element name="resourcePath" type="com:Path"/>
+                </sequence>
+            </complexType>
+            <complexType name="GrantExportResponse">
+                <sequence>
+                    <element ref="com:securityToken"/>
+                </sequence>
+            </complexType>
+        </schema>
+    </types>
+    <message name="createSafebox">
+        <part name="parameter" element="v2_1:createSafebox"/>
+    </message>
+    <message name="createSafeboxResponse">
+        <part name="parameter" element="v2_1:createSafeboxResponse"/>
+    </message>
+    <message name="readSafebox">
+        <part name="parameter" element="v2_1:readSafebox"/>
+    </message>
+    <message name="readSafeboxResponse">
+        <part name="parameter" element="v2_1:readSafeboxResponse"/>
+    </message>
+    <message name="updateSafebox">
+        <part name="parameter" element="v2_1:updateSafebox"/>
+    </message>
+    <message name="updateSafeboxResponse">
+        <part name="parameter" element="v2_1:updateSafeboxResponse"/>
+    </message>
+    <message name="deleteSafebox">
+        <part name="parameter" element="v2_1:deleteSafebox"/>
+    </message>
+    <message name="deleteSafeboxResponse">
+        <part name="parameter" element="v2_1:deleteSafeboxResponse"/>
+    </message>
+    <message name="findSafeboxes">
+        <part name="parameter" element="v2_1:findSafeboxes"/>
+    </message>
+    <message name="findSafeboxesResponse">
+        <part name="parameter" element="v2_1:findSafeboxesResponse"/>
+    </message>
+    <message name="findSafeboxesResponseContent">
+        <part name="parameter" element="v2_1:findSafeboxesResponseContent"/>
+    </message>
+    <message name="nextSafeboxes">
+        <part name="parameter" element="v2_1:nextSafeboxes"/>
+    </message>
+    <message name="nextSafeboxesResponseContent">
+        <part name="parameter" element="v2_1:nextSafeboxesResponseContent"/>
+    </message>
+
+    <message name="changeAccessPermissions">
+        <part name="parameter" element="v2_1:changeAccessPermissions"/>
+    </message>
+    <message name="changeAccessPermissionsResponse">
+        <part name="parameter" element="v2_1:changeAccessPermissionsResponse"/>
+    </message>
+
+    <message name="createOrgunit">
+        <part name="parameter" element="v2_1:createOrgunit"/>
+    </message>
+    <message name="createOrgunitResponse">
+        <part name="parameter" element="v2_1:createOrgunitResponse"/>
+    </message>
+    <message name="readOrgunit">
+        <part name="parameter" element="v2_1:readOrgunit"/>
+    </message>
+    <message name="readOrgunitResponse">
+        <part name="parameter" element="v2_1:readOrgunitResponse"/>
+    </message>
+    <message name="updateOrgunit">
+        <part name="parameter" element="v2_1:updateOrgunit"/>
+    </message>
+    <message name="updateOrgunitResponse">
+        <part name="parameter" element="v2_1:updateOrgunitResponse"/>
+    </message>
+    <message name="deleteOrgunit">
+        <part name="parameter" element="v2_1:deleteOrgunit"/>
+    </message>
+    <message name="deleteOrgunitResponse">
+        <part name="parameter" element="v2_1:deleteOrgunitResponse"/>
+    </message>
+    <message name="createUser">
+        <part name="parameter" element="v2_1:createUser"/>
+    </message>
+    <message name="createUserResponse">
+        <part name="parameter" element="v2_1:createUserResponse"/>
+    </message>
+    <message name="readUser">
+        <part name="parameter" element="v2_1:readUser"/>
+    </message>
+    <message name="readUserResponse">
+        <part name="parameter" element="v2_1:readUserResponse"/>
+    </message>
+    <message name="updateUser">
+        <part name="parameter" element="v2_1:updateUser"/>
+    </message>
+    <message name="updateUserResponse">
+        <part name="parameter" element="v2_1:updateUserResponse"/>
+    </message>
+    <message name="deleteUser">
+        <part name="parameter" element="v2_1:deleteUser"/>
+    </message>
+    <message name="deleteUserResponse">
+        <part name="parameter" element="v2_1:deleteUserResponse"/>
+    </message>
+    <message name="addAuthorizations">
+        <part name="parameter" element="v2_1:addAuthorizations"/>
+    </message>
+    <message name="addAuthorizationsResponse">
+        <part name="parameter" element="v2_1:addAuthorizationsResponse"/>
+    </message>
+    <message name="removeAuthorizations">
+        <part name="parameter" element="v2_1:removeAuthorizations"/>
+    </message>
+    <message name="removeAuthorizationsResponse">
+        <part name="parameter" element="v2_1:removeAuthorizationsResponse"/>
+    </message>
+    <message name="createDeposit">
+        <part name="parameter" element="v2_1:createDeposit"/>
+    </message>
+    <message name="createDepositResponse">
+        <part name="parameter" element="v2_1:createDepositResponse"/>
+    </message>
+    <message name="readDeposit">
+        <part name="parameter" element="v2_1:readDeposit"/>
+    </message>
+    <message name="readDepositResponse">
+        <part name="parameter" element="v2_1:readDepositResponse"/>
+    </message>
+    <message name="updateDepositMetadata">
+        <part name="parameter" element="v2_1:updateDepositMetadata"/>
+    </message>
+    <message name="updateDepositMetadataResponse">
+        <part name="parameter" element="v2_1:updateDepositMetadataResponse"/>
+    </message>
+    <message name="updateDeposit">
+        <part name="parameter" element="v2_1:updateDeposit"/>
+    </message>
+    <message name="updateDepositResponse">
+        <part name="parameter" element="v2_1:updateDepositResponse"/>
+    </message>
+    <message name="deleteDeposit">
+        <part name="parameter" element="v2_1:deleteDeposit"/>
+    </message>
+    <message name="deleteDepositResponse">
+        <part name="parameter" element="v2_1:deleteDepositResponse"/>
+    </message>
+    <message name="discardDeposit">
+        <part name="parameter" element="v2_1:discardDeposit"/>
+    </message>
+    <message name="discardDepositResponse">
+        <part name="parameter" element="v2_1:discardDepositResponse"/>
+    </message>
+    <message name="restoreDeposit">
+        <part name="parameter" element="v2_1:restoreDeposit"/>
+    </message>
+    <message name="restoreDepositResponse">
+        <part name="parameter" element="v2_1:restoreDepositResponse"/>
+    </message>
+    <message name="findDeposits">
+        <part name="parameter" element="v2_1:findDeposits"/>
+    </message>
+    <message name="findDepositsResponse">
+        <part name="parameter" element="v2_1:findDepositsResponse"/>
+    </message>
+    <message name="findDepositsResponseContent">
+        <part name="parameter" element="v2_1:findDepositsResponseContent"/>
+    </message>
+    <message name="nextDeposits">
+        <part name="parameter" element="v2_1:nextDeposits"/>
+    </message>
+    <message name="nextDepositsResponseContent">
+        <part name="parameter" element="v2_1:nextDepositsResponseContent"/>
+    </message>
+    <message name="importDeposit">
+        <part name="parameter" element="v2_1:importDeposit"/>
+    </message>
+    <message name="importDepositResponse">
+        <part name="parameter" element="v2_1:importDepositResponse"/>
+    </message>
+    <message name="importDepositResponseContent">
+        <part name="parameter" element="v2_1:importDepositResponseContent"/>
+    </message>
+
+    <message name="createCertificate">
+        <part name="parameter" element="v2_1:createCertificate"/>
+    </message>
+    <message name="createCertificateResponse">
+        <part name="parameter" element="v2_1:createCertificateResponse"/>
+    </message>
+    <message name="readCertificate">
+        <part name="parameter" element="v2_1:readCertificate"/>
+    </message>
+    <message name="readCertificateResponse">
+        <part name="parameter" element="v2_1:readCertificateResponse"/>
+    </message>
+    <message name="updateCertificate">
+        <part name="parameter" element="v2_1:updateCertificate"/>
+    </message>
+    <message name="updateCertificateResponse">
+        <part name="parameter" element="v2_1:updateCertificateResponse"/>
+    </message>
+    <message name="deleteCertificate">
+        <part name="parameter" element="v2_1:deleteCertificate"/>
+    </message>
+    <message name="deleteCertificateResponse">
+        <part name="parameter" element="v2_1:deleteCertificateResponse"/>
+    </message>
+    <message name="findCertificates">
+        <part name="parameter" element="v2_1:findCertificates"/>
+    </message>
+    <message name="findCertificatesResponse">
+        <part name="parameter" element="v2_1:findCertificatesResponse"/>
+    </message>
+    <message name="findCertificatesResponseContent">
+        <part name="parameter" element="v2_1:findCertificatesResponseContent"/>
+    </message>
+    <message name="nextCertificates">
+        <part name="parameter" element="v2_1:nextCertificates"/>
+    </message>
+    <message name="nextCertificatesResponseContent">
+        <part name="parameter" element="v2_1:nextCertificatesResponseContent"/>
+    </message>
+
+    <message name="grantRead">
+        <part name="parameter" element="v2_1:grantRead"/>
+    </message>
+    <message name="grantReadResponseContent">
+        <part name="parameter" element="v2_1:grantReadResponseContent"/>
+    </message>
+    <message name="grantWrite">
+        <part name="parameter" element="v2_1:grantWrite"/>
+    </message>
+    <message name="grantWriteResponseContent">
+        <part name="parameter" element="v2_1:grantWriteResponseContent"/>
+    </message>
+    <message name="grantUpdate">
+        <part name="parameter" element="v2_1:grantUpdate"/>
+    </message>
+    <message name="grantUpdateResponseContent">
+        <part name="parameter" element="v2_1:grantUpdateResponseContent"/>
+    </message>
+    <message name="grantDelete">
+        <part name="parameter" element="v2_1:grantDelete"/>
+    </message>
+    <message name="grantDeleteResponseContent">
+        <part name="parameter" element="v2_1:grantDeleteResponseContent"/>
+    </message>
+    <message name="grantExport">
+        <part name="parameter" element="v2_1:grantExport"/>
+    </message>
+    <message name="grantExportResponse">
+        <part name="parameter" element="v2_1:grantExportResponse"/>
+    </message>
+
+    <message name="EnvironmentFaultException">
+        <part name="EnvironmentFaultInfo" element="v2_1:EnvironmentFaultElement"/>
+    </message>
+    <message name="UserFaultException">
+        <part name="UserFaultInfo" element="v2_1:UserFaultElement"/>
+    </message>
+    <portType name="SafeboxPort">
+        <operation name="createSafebox">
+            <input name="createSafebox" message="tns:createSafebox"/>
+            <output name="createSafeboxResponse" message="tns:createSafeboxResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="readSafebox">
+            <input name="readSafebox" message="tns:readSafebox"/>
+            <output name="readSafeboxResponse" message="tns:readSafeboxResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="updateSafebox">
+            <input name="updateSafebox" message="tns:updateSafebox"/>
+            <output name="updateSafeboxResponse" message="tns:updateSafeboxResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="deleteSafebox">
+            <input name="deleteSafebox" message="tns:deleteSafebox"/>
+            <output name="deleteSafeboxResponse" message="tns:deleteSafeboxResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="findSafeboxes">
+            <input name="findSafeboxes" message="tns:findSafeboxes"/>
+            <output name="findSafeboxesResponseContent" message="tns:findSafeboxesResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="nextSafeboxes">
+            <input name="nextSafeboxes" message="tns:nextSafeboxes"/>
+            <output name="nextSafeboxesResponseContent" message="tns:nextSafeboxesResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="changeAccessPermissions">
+            <input name="changeAccessPermissions" message="tns:changeAccessPermissions"/>
+            <output name="changeAccessPermissionsResponse" message="tns:changeAccessPermissionsResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+    </portType>
+    <portType name="OrgunitPort">
+        <operation name="createOrgunit">
+            <input name="createOrgunit" message="tns:createOrgunit"/>
+            <output name="createOrgunitResponse" message="tns:createOrgunitResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="readOrgunit">
+            <input name="readOrgunit" message="tns:readOrgunit"/>
+            <output name="readOrgunitResponse" message="tns:readOrgunitResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="updateOrgunit">
+            <input name="updateOrgunit" message="tns:updateOrgunit"/>
+            <output name="updateOrgunitResponse" message="tns:updateOrgunitResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="deleteOrgunit">
+            <input name="deleteOrgunit" message="tns:deleteOrgunit"/>
+            <output name="deleteOrgunitResponse" message="tns:deleteOrgunitResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+    </portType>
+    <portType name="UserPort">
+        <operation name="createUser">
+            <input name="createUser" message="tns:createUser"/>
+            <output name="createUserResponse" message="tns:createUserResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="readUser">
+            <input name="readUser" message="tns:readUser"/>
+            <output name="readUserResponse" message="tns:readUserResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="updateUser">
+            <input name="updateUser" message="tns:updateUser"/>
+            <output name="updateUserResponse" message="tns:updateUserResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="deleteUser">
+            <input name="deleteUser" message="tns:deleteUser"/>
+            <output name="deleteUserResponse" message="tns:deleteUserResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="addAuthorizations">
+            <input name="addAuthorizations" message="tns:addAuthorizations"/>
+            <output name="addAuthorizationsResponse" message="tns:addAuthorizationsResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="removeAuthorizations">
+            <input name="removeAuthorizations" message="tns:removeAuthorizations"/>
+            <output name="removeAuthorizationsResponse" message="tns:removeAuthorizationsResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+    </portType>
+    <portType name="DepositPort">
+        <operation name="createDeposit">
+            <input name="createDeposit" message="tns:createDeposit"/>
+            <output name="createDepositResponse" message="tns:createDepositResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="readDeposit">
+            <input name="readDeposit" message="tns:readDeposit"/>
+            <output name="readDepositResponse" message="tns:readDepositResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="updateDepositMetadata">
+            <input name="updateDepositMetadata" message="tns:updateDepositMetadata"/>
+            <output name="updateDepositMetadataResponse" message="tns:updateDepositMetadataResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="updateDeposit">
+            <input name="updateDeposit" message="tns:updateDeposit"/>
+            <output name="updateDepositResponse" message="tns:updateDepositResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="deleteDeposit">
+            <input name="deleteDeposit" message="tns:deleteDeposit"/>
+            <output name="deleteDepositResponse" message="tns:deleteDepositResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="discardDeposit">
+            <input name="discardDeposit" message="tns:discardDeposit"/>
+            <output name="discardDepositResponse" message="tns:discardDepositResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="restoreDeposit">
+            <input name="restoreDeposit" message="tns:restoreDeposit"/>
+            <output name="restoreDepositResponse" message="tns:restoreDepositResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="findDeposits">
+            <input name="findDeposits" message="tns:findDeposits"/>
+            <output name="findDepositsResponseContent" message="tns:findDepositsResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="nextDeposits">
+            <input name="nextDeposits" message="tns:nextDeposits"/>
+            <output name="nextDepositsResponseContent" message="tns:nextDepositsResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="importDeposit">
+            <input name="importDeposit" message="tns:importDeposit"/>
+            <output name="importDepositResponseContent" message="tns:importDepositResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="changeAccessPermissions">
+            <input name="changeAccessPermissions" message="tns:changeAccessPermissions"/>
+            <output name="changeAccessPermissionsResponse" message="tns:changeAccessPermissionsResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+    </portType>
+    <portType name="CertificatePort">
+        <operation name="createCertificate">
+            <input name="createCertificate" message="tns:createCertificate"/>
+            <output name="createCertificateResponse" message="tns:createCertificateResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="readCertificate">
+            <input name="readCertificate" message="tns:readCertificate"/>
+            <output name="readCertificateResponse" message="tns:readCertificateResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="updateCertificate">
+            <input name="updateCertificate" message="tns:updateCertificate"/>
+            <output name="updateCertificateResponse" message="tns:updateCertificateResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="deleteCertificate">
+            <input name="deleteCertificate" message="tns:deleteCertificate"/>
+            <output name="deleteCertificateResponse" message="tns:deleteCertificateResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="findCertificates">
+            <input name="findCertificates" message="tns:findCertificates"/>
+            <output name="findCertificatesResponseContent" message="tns:findCertificatesResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="nextCertificates">
+            <input name="nextCertificates" message="tns:nextCertificates"/>
+            <output name="nextCertificatesResponseContent" message="tns:nextCertificatesResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+    </portType>
+    <portType name="SecretPort">
+        <operation name="grantRead">
+            <input name="grantRead" message="tns:grantRead"/>
+            <output name="grantReadResponseContent" message="tns:grantReadResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="grantWrite">
+            <input name="grantWrite" message="tns:grantWrite"/>
+            <output name="grantWriteResponseContent" message="tns:grantWriteResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="grantUpdate">
+            <input name="grantUpdate" message="tns:grantUpdate"/>
+            <output name="grantUpdateResponseContent" message="tns:grantUpdateResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="grantDelete">
+            <input name="grantDelete" message="tns:grantDelete"/>
+            <output name="grantDeleteResponseContent" message="tns:grantDeleteResponseContent"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+        <operation name="grantExport">
+            <input name="grantExport" message="tns:grantExport"/>
+            <output name="grantExportResponse" message="tns:grantExportResponse"/>
+            <fault name="EnvironmentFaultException" message="tns:EnvironmentFaultException"/>
+            <fault name="UserFaultException" message="tns:UserFaultException"/>
+        </operation>
+    </portType>
+    <binding name="Safebox_SOAPBinding" type="tns:SafeboxPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="createSafebox">
+            <soap:operation soapAction="Safebox:create" style="document"/>
+            <input name="createSafebox">
+                <soap:body use="literal"/>
+            </input>
+            <output name="createSafeboxResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="readSafebox">
+            <soap:operation soapAction="Safebox:read" style="document"/>
+            <input name="readSafebox">
+                <soap:body use="literal"/>
+            </input>
+            <output name="readSafeboxResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="updateSafebox">
+            <soap:operation soapAction="Safebox:update" style="document"/>
+            <input name="updateSafebox">
+                <soap:body use="literal"/>
+            </input>
+            <output name="updateSafeboxResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="deleteSafebox">
+            <soap:operation soapAction="Safebox:delete" style="document"/>
+            <input name="deleteSafebox">
+                <soap:body use="literal"/>
+            </input>
+            <output name="deleteSafeboxResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="findSafeboxes">
+            <soap:operation soapAction="Safebox:find" style="document"/>
+            <input name="findSafeboxes">
+                <soap:body use="literal"/>
+            </input>
+            <output name="findSafeboxesResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="nextSafeboxes">
+            <soap:operation soapAction="Safebox:next" style="document"/>
+            <input name="nextSafeboxes">
+                <soap:body use="literal"/>
+            </input>
+            <output name="nextSafeboxesResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="changeAccessPermissions">
+            <soap:operation soapAction="Safebox:changeAccessPermissions" style="document"/>
+            <input name="changeAccessPermissions">
+                <soap:body use="literal"/>
+            </input>
+            <output name="changeAccessPermissionsResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="Orgunit_SOAPBinding" type="tns:OrgunitPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="createOrgunit">
+            <soap:operation soapAction="Orgunit:create" style="document"/>
+            <input name="createOrgunit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="createOrgunitResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="readOrgunit">
+            <soap:operation soapAction="Orgunit:read" style="document"/>
+            <input name="readOrgunit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="readOrgunitResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="updateOrgunit">
+            <soap:operation soapAction="Orgunit:update" style="document"/>
+            <input name="updateOrgunit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="updateOrgunitResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="deleteOrgunit">
+            <soap:operation soapAction="Orgunit:delete" style="document"/>
+            <input name="deleteOrgunit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="deleteOrgunitResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="User_SOAPBinding" type="tns:UserPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="createUser">
+            <soap:operation soapAction="User:create" style="document"/>
+            <input name="createUser">
+                <soap:body use="literal"/>
+            </input>
+            <output name="createUserResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="readUser">
+            <soap:operation soapAction="User:read" style="document"/>
+            <input name="readUser">
+                <soap:body use="literal"/>
+            </input>
+            <output name="readUserResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="updateUser">
+            <soap:operation soapAction="User:update" style="document"/>
+            <input name="updateUser">
+                <soap:body use="literal"/>
+            </input>
+            <output name="updateUserResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="deleteUser">
+            <soap:operation soapAction="User:delete" style="document"/>
+            <input name="deleteUser">
+                <soap:body use="literal"/>
+            </input>
+            <output name="deleteUserResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="addAuthorizations">
+            <soap:operation soapAction="User:addAuthorizations" style="document"/>
+            <input name="addAuthorizations">
+                <soap:body use="literal"/>
+            </input>
+            <output name="addAuthorizationsResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="removeAuthorizations">
+            <soap:operation soapAction="User:removeAuthorizations" style="document"/>
+            <input name="removeAuthorizations">
+                <soap:body use="literal"/>
+            </input>
+            <output name="removeAuthorizationsResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="Deposit_SOAPBinding" type="tns:DepositPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="createDeposit">
+            <soap:operation soapAction="Deposit:create" style="document"/>
+            <input name="createDeposit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="createDepositResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="readDeposit">
+            <soap:operation soapAction="Deposit:read" style="document"/>
+            <input name="readDeposit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="readDepositResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="updateDepositMetadata">
+            <soap:operation soapAction="Deposit:updateMetadata" style="document"/>
+            <input name="updateDepositMetadata">
+                <soap:body use="literal"/>
+            </input>
+            <output name="updateDepositMetadataResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="updateDeposit">
+            <soap:operation soapAction="Deposit:update" style="document"/>
+            <input name="updateDeposit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="updateDepositResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="deleteDeposit">
+            <soap:operation soapAction="Deposit:delete" style="document"/>
+            <input  name="deleteDeposit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="deleteDepositResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="discardDeposit">
+            <soap:operation soapAction="Deposit:discard" style="document"/>
+            <input name="discardDeposit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="discardDepositResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="restoreDeposit">
+            <soap:operation soapAction="Deposit:restore" style="document"/>
+            <input name="restoreDeposit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="restoreDepositResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="findDeposits">
+            <soap:operation soapAction="Deposit:find" style="document"/>
+            <input name="findDeposits">
+                <soap:body use="literal"/>
+            </input>
+            <output name="findDepositsResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="nextDeposits">
+            <soap:operation soapAction="Deposit:next" style="document"/>
+            <input name="nextDeposits">
+                <soap:body use="literal"/>
+            </input>
+            <output name="nextDepositsResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="importDeposit">
+            <soap:operation soapAction="Deposit:import" style="document"/>
+            <input name="importDeposit">
+                <soap:body use="literal"/>
+            </input>
+            <output name="importDepositResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="changeAccessPermissions">
+            <soap:operation soapAction="Deposit:changeAccessPermissions" style="document"/>
+            <input name="changeAccessPermissions">
+                <soap:body use="literal"/>
+            </input>
+            <output name="changeAccessPermissionsResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="Certificate_SOAPBinding" type="tns:CertificatePort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="createCertificate">
+            <soap:operation soapAction="Certificate:create" style="document"/>
+            <input name="createCertificate">
+                <soap:body use="literal"/>
+            </input>
+            <output name="createCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="readCertificate">
+            <soap:operation soapAction="Certificate:read" style="document"/>
+            <input name="readCertificate">
+                <soap:body use="literal"/>
+            </input>
+            <output name="readCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="updateCertificate">
+            <soap:operation soapAction="Certificate:update" style="document"/>
+            <input name="updateCertificate">
+                <soap:body use="literal"/>
+            </input>
+            <output name="updateCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="deleteCertificate">
+            <soap:operation soapAction="Certificate:delete" style="document"/>
+            <input name="deleteCertificate">
+                <soap:body use="literal"/>
+            </input>
+            <output name="deleteCertificateResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="findCertificates">
+            <soap:operation soapAction="Certificate:find" style="document"/>
+            <input name="findCertificates">
+                <soap:body use="literal"/>
+            </input>
+            <output name="findCertificatesResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="nextCertificates">
+            <soap:operation soapAction="Certificate:next" style="document"/>
+            <input name="nextCertificates">
+                <soap:body use="literal"/>
+            </input>
+            <output name="nextCertificatesResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="Secret_SOAPBinding" type="tns:SecretPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="grantRead">
+            <soap:operation soapAction="Secret:grantRead" style="document"/>
+            <input name="grantRead">
+                <soap:body use="literal"/>
+            </input>
+            <output name="grantReadResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="grantWrite">
+            <soap:operation soapAction="Secret:grantWrite" style="document"/>
+            <input name="grantWrite">
+                <soap:body use="literal"/>
+            </input>
+            <output name="grantWriteResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="grantUpdate">
+            <soap:operation soapAction="Secret:grantUpdate" style="document"/>
+            <input name="grantUpdate">
+                <soap:body use="literal"/>
+            </input>
+            <output name="grantUpdateResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="grantDelete">
+            <soap:operation soapAction="Secret:grantDelete" style="document"/>
+            <input name="grantDelete">
+                <soap:body use="literal"/>
+            </input>
+            <output name="grantDeleteResponseContent">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="grantExport">
+            <soap:operation soapAction="Secret:grantExport" style="document"/>
+            <input name="grantExport">
+                <soap:body use="literal"/>
+            </input>
+            <output name="grantExportResponse">
+                <soap:body use="literal"/>
+            </output>
+            <fault name="EnvironmentFaultException">
+                <soap:fault name="EnvironmentFaultException" use="literal"/>
+            </fault>
+            <fault name="UserFaultException">
+                <soap:fault name="UserFaultException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="Authority">
+        <port name="SafeboxPort" binding="tns:Safebox_SOAPBinding">
+            <soap:address location="http://d3s.dictao.com/dictao-d3s-authority-web"/>
+        </port>
+        <port name="OrgunitPort" binding="tns:Orgunit_SOAPBinding">
+            <soap:address location="http://d3s.dictao.com/dictao-d3s-authority-web"/>
+        </port>
+        <port name="UserPort" binding="tns:User_SOAPBinding">
+            <soap:address location="http://d3s.dictao.com/dictao-d3s-authority-web"/>
+        </port>
+        <port name="DepositPort" binding="tns:Deposit_SOAPBinding">
+            <soap:address location="http://d3s.dictao.com/dictao-d3s-authority-web"/>
+        </port>
+        <port name="CertificatePort" binding="tns:Certificate_SOAPBinding">
+            <soap:address location="http://d3s.dictao.com/dictao-d3s-authority-web"/>
+        </port>
+        <port name="SecretPort" binding="tns:Secret_SOAPBinding">
+            <soap:address location="http://d3s.dictao.com/dictao-d3s-authority-web"/>
+        </port>
+    </service>
+    <!-- types -->
+</definitions>
