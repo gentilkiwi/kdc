@@ -28,6 +28,9 @@ public class OpStatus extends ListeReponses<Integer>{
             case 20:
                 maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Erreur avec la base de données"));
                 break;
+            case 21:
+                maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Erreur d'insertion de la preuve dans la base de données"));
+                break;
             case 30:
                 maListeDeReponses.add(new Reponse(TypeReponse.ERREUR, "Erreur lors de l'appel au préparseur"));
                 break;
