@@ -1,6 +1,7 @@
 package org.kiwi.dictao.responses.dsam.verifySignature;
 
-import org.kiwi.dictao.responses.*;
+import org.kiwi.dictao.responses.ListeReponses;
+import org.kiwi.dictao.responses.Reponse;
 import org.kiwi.dictao.responses.Reponse.TypeReponse;
 
 public class AMRecordStatus extends ListeReponses<Integer>{

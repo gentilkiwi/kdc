@@ -11,7 +11,7 @@ public abstract class ListeReponses<TYPE> {
 
     protected ListeReponses(TYPE leCode){
        this.leCode = leCode;
-       maListeDeReponses = new ArrayList<Reponse>();
+       maListeDeReponses = new ArrayList<>();
        computeListe(leCode);
     }
 
@@ -23,7 +23,7 @@ public abstract class ListeReponses<TYPE> {
 
     public ArrayList<Reponse> getMessageListOf(Reponse.TypeReponse leType) {
 
-        ArrayList<Reponse> maListeDeReponsesFiltrees = new ArrayList<Reponse>();
+        ArrayList<Reponse> maListeDeReponsesFiltrees = new ArrayList<>();
 
         for (Reponse maReponse : maListeDeReponses) {
             if(maReponse.getType() == leType)
@@ -37,7 +37,7 @@ public abstract class ListeReponses<TYPE> {
     public String toString() {
         StringBuilder monBuffer = new StringBuilder();
 
-        Integer nombre = new Integer(0);
+        Integer nombre;// = new Integer(0);
         if(leCode.getClass().getSimpleName().equals("BigInteger")) {
             nombre = ((BigInteger) leCode).intValue();
         } else {

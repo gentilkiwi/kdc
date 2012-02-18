@@ -3,7 +3,9 @@ package org.kiwi.dictao.clients;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import org.kohsuke.args4j.*;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 public class StandardWebService extends HttpsWebServiceClient {
 

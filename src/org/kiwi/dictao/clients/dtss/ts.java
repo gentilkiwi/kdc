@@ -8,20 +8,20 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
-import org.kiwi.dictao.clients.HttpsWebServiceClient;
-import org.kohsuke.args4j.*;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.tsp.*;
-
 import java.security.Security;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.tsp.*;
+import org.kiwi.dictao.clients.HttpsWebServiceClient;
 import org.kiwi.dictao.responses.dtss.ts.Resultat;
 import org.kiwi.utils.Affichages;
 import org.kiwi.utils.Connections;
 import org.kiwi.utils.DataTypes;
 import org.kiwi.utils.Hex;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 public class ts extends HttpsWebServiceClient {
 

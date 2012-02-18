@@ -1,16 +1,15 @@
 package org.kiwi.dictao.clients.d3s.Authority;
 
-import org.kiwi.dictao.webservices.d3s.Authority.*;
-import org.kiwi.dictao.clients.HttpsWebServiceClient;
-
-import org.kohsuke.args4j.*;
-
-import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import org.kiwi.dictao.clients.HttpsWebServiceClient;
+import org.kiwi.dictao.webservices.d3s.Authority.Authority;
+import org.kiwi.dictao.webservices.d3s.Authority.UserPort;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
 
 public class User extends HttpsWebServiceClient{
 

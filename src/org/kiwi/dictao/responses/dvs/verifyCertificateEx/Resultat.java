@@ -1,9 +1,9 @@
 package org.kiwi.dictao.responses.dvs.verifyCertificateEx;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import org.kiwi.dictao.responses.GeneralResultat;
 import org.kiwi.dictao.webservices.dvs.*;
-import java.math.BigInteger;
 import org.kiwi.utils.Base64;
 
 public class Resultat extends GeneralResultat<DVSResponseEx> {

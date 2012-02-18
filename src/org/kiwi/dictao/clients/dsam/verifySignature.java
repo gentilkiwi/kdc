@@ -1,19 +1,18 @@
 package org.kiwi.dictao.clients.dsam;
 
-import org.kiwi.dictao.webservices.dsam.*;
-import org.kiwi.dictao.clients.StandardWebService;
-import org.kiwi.dictao.responses.dsam.verifySignature.Resultat;
-
-import org.kiwi.utils.DataTypes;
-import org.kohsuke.args4j.*;
-
 import java.io.File;
-import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import org.kiwi.dictao.clients.StandardWebService;
+import org.kiwi.dictao.responses.dsam.verifySignature.Resultat;
+import org.kiwi.dictao.webservices.dsam.*;
+import org.kiwi.utils.DataTypes;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 public class verifySignature extends StandardWebService{
     @Option(name = "--signature", required = true, usage = "Signature à valider")
