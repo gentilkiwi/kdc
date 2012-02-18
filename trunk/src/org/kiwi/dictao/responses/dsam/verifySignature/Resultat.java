@@ -89,18 +89,25 @@ public class Resultat extends GeneralResultat<DSAMResponse> {
                                 CriterionType monCriterion = monCrit.getCriterionValue();
 
                                 monBufferCriteres.append(monNom).append(" (").append(monType).append(") ");
-                                if (monType.equals("date")) {
-                                    monBufferCriteres.append(monCriterion.getValueDate());
-                                } else if (monType.equals("string")) {
-                                    monBufferCriteres.append(monCriterion.getValueString());
-                                } else if (monType.equals("double")) {
-                                    monBufferCriteres.append(monCriterion.getValueDouble());
-                                } else if (monType.equals("float")) {
-                                    monBufferCriteres.append(monCriterion.getValueFloat());
-                                } else if (monType.equals("int")) {
-                                    monBufferCriteres.append(monCriterion.getValueInt());
-                                } else if (monType.equals("long")) {
-                                    monBufferCriteres.append(monCriterion.getValueLong());
+                                switch (monType) {
+                                    case "date":
+                                        monBufferCriteres.append(monCriterion.getValueDate());
+                                        break;
+                                    case "string":
+                                        monBufferCriteres.append(monCriterion.getValueString());
+                                        break;
+                                    case "double":
+                                        monBufferCriteres.append(monCriterion.getValueDouble());
+                                        break;
+                                    case "float":
+                                        monBufferCriteres.append(monCriterion.getValueFloat());
+                                        break;
+                                    case "int":
+                                        monBufferCriteres.append(monCriterion.getValueInt());
+                                        break;
+                                    case "long":
+                                        monBufferCriteres.append(monCriterion.getValueLong());
+                                        break;
                                 }
                                 monBufferCriteres.append("\n");
                             }

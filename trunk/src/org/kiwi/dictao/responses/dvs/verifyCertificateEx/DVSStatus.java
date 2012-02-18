@@ -1,7 +1,8 @@
 package org.kiwi.dictao.responses.dvs.verifyCertificateEx;
 
 import java.math.BigInteger;
-import org.kiwi.dictao.responses.*;
+import org.kiwi.dictao.responses.ListeReponses;
+import org.kiwi.dictao.responses.Reponse;
 import org.kiwi.dictao.responses.Reponse.TypeReponse;
 
 public class DVSStatus extends ListeReponses<BigInteger>{

@@ -3,24 +3,25 @@ package org.kiwi.dictao.clients.dvs;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import org.kiwi.dictao.clients.HttpsWebServiceClient;
-import org.kiwi.dictao.responses.dvs.ocsp.Resultat;
-import org.kohsuke.args4j.*;
-
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.security.Security;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.Vector;
 import org.bouncycastle.asn1.DEROctetString;
 import org.bouncycastle.asn1.ocsp.OCSPObjectIdentifiers;
 import org.bouncycastle.asn1.x509.X509Extension;
 import org.bouncycastle.asn1.x509.X509Extensions;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.ocsp.*;
-
-import java.security.PublicKey;
-import java.security.Security;
-import java.security.cert.*;
-import java.math.BigInteger;
-import java.util.Vector;
-import org.kiwi.utils.Connections;
+import org.kiwi.dictao.clients.HttpsWebServiceClient;
+import org.kiwi.dictao.responses.dvs.ocsp.Resultat;
 import org.kiwi.utils.Affichages;
+import org.kiwi.utils.Connections;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 public class ocsp extends HttpsWebServiceClient {
     @Option(name = "--certificat", required = true, usage = "Certificat à vérifier")

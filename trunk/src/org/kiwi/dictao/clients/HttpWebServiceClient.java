@@ -7,7 +7,9 @@ import java.util.List;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.Handler;
 import org.kiwi.utils.TraceHandler;
-import org.kohsuke.args4j.*;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 public class HttpWebServiceClient {
 
@@ -34,7 +36,7 @@ public class HttpWebServiceClient {
         if(monProvider != null) {
             monProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, wsUri.toString());
             if (soapMessage) {
-                List<Handler> handlerChain = new LinkedList<Handler>();
+                List<Handler> handlerChain = new LinkedList<>();
                 handlerChain.add(new TraceHandler());
                 monProvider.getBinding().setHandlerChain(handlerChain);
             }

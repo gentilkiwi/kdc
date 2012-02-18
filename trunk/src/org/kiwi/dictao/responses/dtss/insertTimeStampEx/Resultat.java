@@ -1,7 +1,10 @@
 package org.kiwi.dictao.responses.dtss.insertTimeStampEx;
 
 import org.kiwi.dictao.responses.GeneralResultat;
-import org.kiwi.dictao.webservices.dtss.*;
+import org.kiwi.dictao.webservices.dtss.ArrayOfPluginResponseStruct;
+import org.kiwi.dictao.webservices.dtss.DTSSResponseEx;
+import org.kiwi.dictao.webservices.dtss.DataType;
+import org.kiwi.dictao.webservices.dtss.PluginResponseStruct;
 
 public class Resultat extends GeneralResultat<DTSSResponseEx> {
 

@@ -1,8 +1,8 @@
 package org.kiwi.dictao.responses.dvs.verifySignatureEx;
 
+import java.math.BigInteger;
 import org.kiwi.dictao.responses.GeneralResultat;
 import org.kiwi.dictao.webservices.dvs.*;
-import java.math.BigInteger;
 
 public class Resultat extends GeneralResultat<DVSResponseEx> {
 

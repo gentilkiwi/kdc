@@ -1,7 +1,9 @@
 package org.kiwi.dictao.responses.d2slegacy.signatureEx;
 
 import org.kiwi.dictao.responses.GeneralResultat;
-import org.kiwi.dictao.webservices.d2slegacy.*;
+import org.kiwi.dictao.webservices.d2slegacy.ArrayOfPluginResponseStruct;
+import org.kiwi.dictao.webservices.d2slegacy.D2SResponseEx;
+import org.kiwi.dictao.webservices.d2slegacy.PluginResponseStruct;
 
 public class Resultat extends GeneralResultat<D2SResponseEx>{
 

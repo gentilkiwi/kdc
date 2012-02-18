@@ -1,20 +1,19 @@
 package org.kiwi.dictao.clients.d2s;
 
-import org.kiwi.dictao.webservices.d2s.*;
-import org.kiwi.dictao.clients.StandardWebService;
-import org.kiwi.dictao.responses.d2s.signatureEx.Resultat;
-
-import org.kiwi.utils.DataTypes;
-import org.kohsuke.args4j.*;
-
 import java.io.File;
-import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import org.kiwi.dictao.clients.StandardWebService;
+import org.kiwi.dictao.responses.d2s.signatureEx.Resultat;
+import org.kiwi.dictao.webservices.d2s.*;
+import org.kiwi.utils.DataTypes;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 public class signatureEx extends StandardWebService {
     public enum FormatSignature {

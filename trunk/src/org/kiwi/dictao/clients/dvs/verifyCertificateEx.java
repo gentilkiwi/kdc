@@ -1,25 +1,20 @@
 package org.kiwi.dictao.clients.dvs;
 
-import org.kiwi.dictao.webservices.dvs.*;
-import org.kiwi.dictao.clients.StandardWebService;
-import org.kiwi.dictao.responses.dvs.verifyCertificateEx.Resultat;
-
-import org.kohsuke.args4j.*;
-import org.kiwi.utils.Base64;
-
-import java.io.File;
-import java.io.FileInputStream;
-import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.UnknownHostException;
 import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.List;
+import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
+import org.kiwi.dictao.clients.StandardWebService;
+import org.kiwi.dictao.responses.dvs.verifyCertificateEx.Resultat;
+import org.kiwi.dictao.webservices.dvs.*;
+import org.kiwi.utils.Base64;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
 
 public class verifyCertificateEx extends StandardWebService{
     @Option(name = "--refreshCRLs", required = false, usage = "(optionnel) Force le serveur à re-télécharger les CRL avant traitement")

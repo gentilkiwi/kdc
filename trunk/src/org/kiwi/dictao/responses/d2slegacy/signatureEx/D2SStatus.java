@@ -1,6 +1,7 @@
 package org.kiwi.dictao.responses.d2slegacy.signatureEx;
 
-import org.kiwi.dictao.responses.*;
+import org.kiwi.dictao.responses.ListeReponses;
+import org.kiwi.dictao.responses.Reponse;
 import org.kiwi.dictao.responses.Reponse.TypeReponse;
 
 public class D2SStatus extends ListeReponses<Integer> {
